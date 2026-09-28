@@ -11,3 +11,4 @@ src/jwk_thumbprint_pure.egg-info/entry_points.txt
 src/jwk_thumbprint_pure.egg-info/requires.txt
 src/jwk_thumbprint_pure.egg-info/top_level.txt
 tests/test_jwk_thumbprint_pure.py
+tests/test_jwk_thumbprint_pure_more.py

@@ -9,21 +9,25 @@ WARNING: Failed to find function "__sanitizer_acquire_crash_state".
 WARNING: Failed to find function "__sanitizer_print_stack_trace".
 WARNING: Failed to find function "__sanitizer_set_death_callback".
 INFO: Running with entropic power schedule (0xFF, 100).
-INFO: Seed: 3675872737
+INFO: Seed: 631734348
 INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
 INFO: A corpus is not provided, starting from an empty corpus
 #2	INITED cov: 4 ft: 4 corp: 1/1b exec/s: 0 rss: 48Mb
-#6	NEW    cov: 10 ft: 10 corp: 2/3b lim: 4 exec/s: 0 rss: 48Mb L: 2/2 MS: 4 CrossOver-ChangeByte-InsertByte-CrossOver-
-#16	NEW    cov: 17 ft: 17 corp: 3/5b lim: 4 exec/s: 0 rss: 48Mb L: 2/2 MS: 5 InsertByte-ShuffleBytes-CopyPart-ChangeBit-ChangeByte-
-#20	NEW    cov: 22 ft: 22 corp: 4/8b lim: 4 exec/s: 0 rss: 48Mb L: 3/3 MS: 4 CopyPart-CrossOver-ChangeByte-ShuffleBytes-
-#25	NEW    cov: 26 ft: 26 corp: 5/11b lim: 4 exec/s: 0 rss: 48Mb L: 3/3 MS: 5 ShuffleBytes-CrossOver-ChangeBit-EraseBytes-ChangeBit-
-#39	NEW    cov: 32 ft: 32 corp: 6/15b lim: 4 exec/s: 0 rss: 48Mb L: 4/4 MS: 4 CrossOver-ShuffleBytes-ChangeBinInt-CrossOver-
-#40	NEW    cov: 37 ft: 37 corp: 7/17b lim: 4 exec/s: 40 rss: 48Mb L: 2/4 MS: 1 EraseBytes-
-#43	NEW    cov: 41 ft: 41 corp: 8/19b lim: 4 exec/s: 43 rss: 48Mb L: 2/4 MS: 3 ShuffleBytes-ShuffleBytes-ChangeBinInt-
-#46	NEW    cov: 44 ft: 44 corp: 9/21b lim: 4 exec/s: 46 rss: 48Mb L: 2/4 MS: 3 InsertByte-EraseBytes-ShuffleBytes-
-#55	REDUCE cov: 44 ft: 44 corp: 9/20b lim: 4 exec/s: 55 rss: 48Mb L: 2/4 MS: 4 ChangeBinInt-ChangeByte-ChangeBit-EraseBytes-
-#58	REDUCE cov: 44 ft: 44 corp: 9/19b lim: 4 exec/s: 58 rss: 48Mb L: 1/4 MS: 3 ShuffleBytes-ChangeBit-EraseBytes-
-#66	NEW    cov: 44 ft: 45 corp: 10/21b lim: 4 exec/s: 66 rss: 48Mb L: 2/4 MS: 3 ChangeBit-ChangeBit-ChangeByte-
-#72	NEW    cov: 44 ft: 46 corp: 11/23b lim: 4 exec/s: 72 rss: 48Mb L: 2/4 MS: 1 ShuffleBytes-
-#104	REDUCE cov: 85 ft: 87 corp: 12/24b lim: 4 exec/s: 52 rss: 48Mb L: 1/4 MS: 2 ChangeByte-ChangeBit-
-==11774== libFuzzer: run interrupted; exiting
+#5	NEW    cov: 16 ft: 16 corp: 2/4b lim: 4 exec/s: 0 rss: 48Mb L: 3/3 MS: 3 CrossOver-InsertByte-ChangeBit-
+#10	NEW    cov: 57 ft: 57 corp: 3/8b lim: 4 exec/s: 0 rss: 48Mb L: 4/4 MS: 5 InsertByte-ChangeBit-ChangeBinInt-CopyPart-ChangeBit-
+#14	NEW    cov: 62 ft: 62 corp: 4/12b lim: 4 exec/s: 0 rss: 48Mb L: 4/4 MS: 4 ShuffleBytes-ChangeBit-ShuffleBytes-ShuffleBytes-
+#15	REDUCE cov: 62 ft: 62 corp: 4/11b lim: 4 exec/s: 0 rss: 48Mb L: 2/4 MS: 1 EraseBytes-
+#28	REDUCE cov: 67 ft: 67 corp: 5/14b lim: 4 exec/s: 0 rss: 48Mb L: 3/4 MS: 3 InsertByte-ShuffleBytes-ChangeByte-
+#38	NEW    cov: 67 ft: 69 corp: 6/18b lim: 4 exec/s: 0 rss: 48Mb L: 4/4 MS: 5 ChangeBit-ChangeBit-CopyPart-CopyPart-ChangeByte-
+#54	REDUCE cov: 67 ft: 69 corp: 6/17b lim: 4 exec/s: 54 rss: 48Mb L: 2/4 MS: 1 EraseBytes-
+#55	NEW    cov: 67 ft: 71 corp: 7/21b lim: 4 exec/s: 55 rss: 48Mb L: 4/4 MS: 1 ChangeByte-
+#56	REDUCE cov: 67 ft: 71 corp: 7/20b lim: 4 exec/s: 56 rss: 48Mb L: 3/4 MS: 1 EraseBytes-
+#59	REDUCE cov: 67 ft: 71 corp: 7/17b lim: 4 exec/s: 59 rss: 48Mb L: 1/4 MS: 3 ShuffleBytes-ChangeBit-CrossOver-
+#60	REDUCE cov: 71 ft: 75 corp: 8/19b lim: 4 exec/s: 60 rss: 48Mb L: 2/4 MS: 1 ChangeByte-
+#88	NEW    cov: 74 ft: 78 corp: 9/20b lim: 4 exec/s: 44 rss: 48Mb L: 1/4 MS: 3 CopyPart-ChangeBit-ChangeBit-
+#94	NEW    cov: 77 ft: 81 corp: 10/21b lim: 4 exec/s: 47 rss: 48Mb L: 1/4 MS: 1 ChangeByte-
+#104	REDUCE cov: 82 ft: 86 corp: 11/23b lim: 4 exec/s: 52 rss: 48Mb L: 2/4 MS: 5 CrossOver-ChangeBit-EraseBytes-ChangeByte-InsertByte-
+#115	REDUCE cov: 82 ft: 86 corp: 11/22b lim: 4 exec/s: 57 rss: 48Mb L: 1/4 MS: 1 EraseBytes-
+#120	NEW    cov: 85 ft: 89 corp: 12/23b lim: 4 exec/s: 60 rss: 48Mb L: 1/4 MS: 5 InsertByte-ShuffleBytes-EraseBytes-ChangeByte-ChangeByte-
+#128	pulse  cov: 85 ft: 89 corp: 12/23b lim: 4 exec/s: 42 rss: 48Mb
+==12057== libFuzzer: run interrupted; exiting

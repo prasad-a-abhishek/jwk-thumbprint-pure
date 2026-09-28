@@ -1,0 +1,29 @@
+INFO: Instrumenting jwk_thumbprint_pure
+INFO: Instrumenting jwk_thumbprint_pure.thumbprint
+INFO: Instrumenting hashlib
+INFO: Instrumenting base64
+INFO: Instrumenting struct
+INFO: Instrumenting jwk_thumbprint_pure.canonical
+INFO: Using built-in libfuzzer
+WARNING: Failed to find function "__sanitizer_acquire_crash_state".
+WARNING: Failed to find function "__sanitizer_print_stack_trace".
+WARNING: Failed to find function "__sanitizer_set_death_callback".
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 3675872737
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: A corpus is not provided, starting from an empty corpus
+#2	INITED cov: 4 ft: 4 corp: 1/1b exec/s: 0 rss: 48Mb
+#6	NEW    cov: 10 ft: 10 corp: 2/3b lim: 4 exec/s: 0 rss: 48Mb L: 2/2 MS: 4 CrossOver-ChangeByte-InsertByte-CrossOver-
+#16	NEW    cov: 17 ft: 17 corp: 3/5b lim: 4 exec/s: 0 rss: 48Mb L: 2/2 MS: 5 InsertByte-ShuffleBytes-CopyPart-ChangeBit-ChangeByte-
+#20	NEW    cov: 22 ft: 22 corp: 4/8b lim: 4 exec/s: 0 rss: 48Mb L: 3/3 MS: 4 CopyPart-CrossOver-ChangeByte-ShuffleBytes-
+#25	NEW    cov: 26 ft: 26 corp: 5/11b lim: 4 exec/s: 0 rss: 48Mb L: 3/3 MS: 5 ShuffleBytes-CrossOver-ChangeBit-EraseBytes-ChangeBit-
+#39	NEW    cov: 32 ft: 32 corp: 6/15b lim: 4 exec/s: 0 rss: 48Mb L: 4/4 MS: 4 CrossOver-ShuffleBytes-ChangeBinInt-CrossOver-
+#40	NEW    cov: 37 ft: 37 corp: 7/17b lim: 4 exec/s: 40 rss: 48Mb L: 2/4 MS: 1 EraseBytes-
+#43	NEW    cov: 41 ft: 41 corp: 8/19b lim: 4 exec/s: 43 rss: 48Mb L: 2/4 MS: 3 ShuffleBytes-ShuffleBytes-ChangeBinInt-
+#46	NEW    cov: 44 ft: 44 corp: 9/21b lim: 4 exec/s: 46 rss: 48Mb L: 2/4 MS: 3 InsertByte-EraseBytes-ShuffleBytes-
+#55	REDUCE cov: 44 ft: 44 corp: 9/20b lim: 4 exec/s: 55 rss: 48Mb L: 2/4 MS: 4 ChangeBinInt-ChangeByte-ChangeBit-EraseBytes-
+#58	REDUCE cov: 44 ft: 44 corp: 9/19b lim: 4 exec/s: 58 rss: 48Mb L: 1/4 MS: 3 ShuffleBytes-ChangeBit-EraseBytes-
+#66	NEW    cov: 44 ft: 45 corp: 10/21b lim: 4 exec/s: 66 rss: 48Mb L: 2/4 MS: 3 ChangeBit-ChangeBit-ChangeByte-
+#72	NEW    cov: 44 ft: 46 corp: 11/23b lim: 4 exec/s: 72 rss: 48Mb L: 2/4 MS: 1 ShuffleBytes-
+#104	REDUCE cov: 85 ft: 87 corp: 12/24b lim: 4 exec/s: 52 rss: 48Mb L: 1/4 MS: 2 ChangeByte-ChangeBit-
+==11774== libFuzzer: run interrupted; exiting

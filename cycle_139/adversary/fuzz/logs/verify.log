@@ -1,0 +1,34 @@
+INFO: Instrumenting jwk_thumbprint_pure
+INFO: Instrumenting jwk_thumbprint_pure.thumbprint
+INFO: Instrumenting hashlib
+INFO: Instrumenting base64
+INFO: Instrumenting struct
+INFO: Instrumenting jwk_thumbprint_pure.canonical
+INFO: Using built-in libfuzzer
+WARNING: Failed to find function "__sanitizer_acquire_crash_state".
+WARNING: Failed to find function "__sanitizer_print_stack_trace".
+WARNING: Failed to find function "__sanitizer_set_death_callback".
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 3498343341
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: A corpus is not provided, starting from an empty corpus
+#2	INITED cov: 10 ft: 10 corp: 1/1b exec/s: 0 rss: 47Mb
+#4	NEW    cov: 33 ft: 33 corp: 2/2b lim: 4 exec/s: 0 rss: 47Mb L: 1/1 MS: 2 ShuffleBytes-ChangeByte-
+#5	NEW    cov: 37 ft: 37 corp: 3/4b lim: 4 exec/s: 0 rss: 47Mb L: 2/2 MS: 1 InsertByte-
+#7	NEW    cov: 72 ft: 87 corp: 4/8b lim: 4 exec/s: 0 rss: 47Mb L: 4/4 MS: 2 CopyPart-CMP- DE: "\001\000\000\000"-
+#14	NEW    cov: 75 ft: 110 corp: 5/10b lim: 4 exec/s: 0 rss: 47Mb L: 2/4 MS: 2 ShuffleBytes-CrossOver-
+
+ === Uncaught Python exception: ===
+AssertionError: V002 REPRODUCED: verify(depth=396) leaked RecursionError (RecursionError('maximum recursion depth exceeded')) — verify() must catch RecursionError and return False (DoS surface)
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_verify.py", line 137, in TestOneInput
+    raise AssertionError(
+AssertionError: V002 REPRODUCED: verify(depth=396) leaked RecursionError (RecursionError('maximum recursion depth exceeded')) — verify() must catch RecursionError and return False (DoS surface)
+
+==11754== ERROR: libFuzzer: fuzz target exited
+SUMMARY: libFuzzer: fuzz target exited
+MS: 3 ShuffleBytes-CopyPart-InsertByte-; base unit: 3a52ce780950d4d969792a2559cd519d7ee8c727
+0x2e,0x49,
+.I
+artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/verify/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/verify/crash-fa4bd04a585375128198c7b279e60e8467a2f5f1
+Base64: Lkk=

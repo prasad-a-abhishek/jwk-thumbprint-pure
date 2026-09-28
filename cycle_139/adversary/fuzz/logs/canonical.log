@@ -1,0 +1,29 @@
+INFO: Instrumenting jwk_thumbprint_pure
+INFO: Instrumenting jwk_thumbprint_pure.thumbprint
+INFO: Instrumenting hashlib
+INFO: Instrumenting base64
+INFO: Instrumenting struct
+INFO: Instrumenting jwk_thumbprint_pure.canonical
+INFO: Using built-in libfuzzer
+WARNING: Failed to find function "__sanitizer_acquire_crash_state".
+WARNING: Failed to find function "__sanitizer_print_stack_trace".
+WARNING: Failed to find function "__sanitizer_set_death_callback".
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 3587907435
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: A corpus is not provided, starting from an empty corpus
+
+ === Uncaught Python exception: ===
+AssertionError: V010 REPRODUCED: canonical_json({True: 1}) = '{true:1}' contains an unquoted identifier as a key — invalid JSON (SPEC promises valid JSON output)
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_canonical.py", line 214, in TestOneInput
+    raise AssertionError(
+AssertionError: V010 REPRODUCED: canonical_json({True: 1}) = '{true:1}' contains an unquoted identifier as a key — invalid JSON (SPEC promises valid JSON output)
+
+==11764== ERROR: libFuzzer: fuzz target exited
+SUMMARY: libFuzzer: fuzz target exited
+MS: 0 ; base unit: 0000000000000000000000000000000000000000
+0xa,
+\012
+artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/canonical/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/canonical/crash-adc83b19e793491b1c6ea0fd8b46cd9f32e592fc
+Base64: Cg==

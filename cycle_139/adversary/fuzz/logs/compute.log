@@ -1,0 +1,32 @@
+INFO: Instrumenting jwk_thumbprint_pure
+INFO: Instrumenting jwk_thumbprint_pure.thumbprint
+INFO: Instrumenting base64
+INFO: Instrumenting struct
+INFO: Instrumenting jwk_thumbprint_pure.canonical
+INFO: Using built-in libfuzzer
+WARNING: Failed to find function "__sanitizer_acquire_crash_state".
+WARNING: Failed to find function "__sanitizer_print_stack_trace".
+WARNING: Failed to find function "__sanitizer_set_death_callback".
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 3406383998
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: A corpus is not provided, starting from an empty corpus
+#2	INITED cov: 47 ft: 47 corp: 1/1b exec/s: 0 rss: 48Mb
+#3	NEW    cov: 52 ft: 53 corp: 2/3b lim: 4 exec/s: 0 rss: 48Mb L: 2/2 MS: 1 InsertByte-
+#7	NEW    cov: 55 ft: 56 corp: 3/4b lim: 4 exec/s: 0 rss: 48Mb L: 1/2 MS: 4 InsertByte-ChangeBinInt-EraseBytes-EraseBytes-
+#11	NEW    cov: 77 ft: 110 corp: 4/5b lim: 4 exec/s: 0 rss: 48Mb L: 1/2 MS: 4 CopyPart-ShuffleBytes-ShuffleBytes-ChangeByte-
+
+ === Uncaught Python exception: ===
+AssertionError: V009 REPRODUCED: compute_thumbprint(mixed-type dict) raised TypeError (TypeError("'<' not supported between instances of 'int' and 'str'")) — SPEC promises ValueError
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_compute.py", line 255, in TestOneInput
+    raise AssertionError(
+AssertionError: V009 REPRODUCED: compute_thumbprint(mixed-type dict) raised TypeError (TypeError("'<' not supported between instances of 'int' and 'str'")) — SPEC promises ValueError
+
+==11744== ERROR: libFuzzer: fuzz target exited
+SUMMARY: libFuzzer: fuzz target exited
+MS: 1 ChangeBit-; base unit: 3c89586d99f2567d21410f29b1b2606574892aa7
+0xeb,
+\353
+artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/compute/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/compute/crash-a70fb6a9415d3c34a9ea5510ba7e3a055d88aef9
+Base64: 6w==

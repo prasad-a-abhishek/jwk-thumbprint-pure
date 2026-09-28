@@ -1,0 +1,21 @@
+{
+  "cycle_id": 139,
+  "phase": "T2_harnesses",
+  "surface": "compute",
+  "harness": "harness_compute.py",
+  "asan_ubsan_enabled": false,
+  "asan_ubsan_note": "Atheris ships its own coverage instrumentation; ASan/UBSan are OS-level and require the runtime to be enabled. The harness itself is compatible with ASan/UBSan-enabled CPython (atheris loads natively under them); whether they catch issues depends on the CPython build, not the harness.",
+  "wall_budget_seconds": 5,
+  "iterations": null,
+  "duration_seconds": null,
+  "cov_edges": null,
+  "cov_features": null,
+  "crashes_total": 0,
+  "hangs_total": 0,
+  "oom_total": 0,
+  "oracle_mismatches_total": 0,
+  "crash_files": [],
+  "log_path": "cycle_139/adversary/fuzz/logs/compute.log",
+  "corpus_path": "cycle_139/adversary/fuzz/corpus/compute/",
+  "note": "T2 deliverable: stats to be populated by T3 (corpus_run) at 5-min/surface wall budget."
+}

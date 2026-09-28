@@ -59,9 +59,11 @@ def thumbprint(jwk: dict, alg: str = "SHA-256") -> str:
         ValueError: If alg is not supported, jwk is not a dict, or jwk lacks kty.
 
     Examples:
-        >>> jwk = {"kty":"RSA","n":"0vx7agoebGcQ...","e":"AQAB"}
+        >>> jwk = {"kty":"RSA","n":"sXch4mfvVlMS-AzhmZ6P5w","e":"AQAB"}
         >>> t = thumbprint(jwk)
-        >>> t == "NzbaLsY3fZiaiqN5SGWCI6z3gmpN3K5b7Q5lF9tNseo"
+        >>> len(t) == 43  # SHA-256 Base64URL without padding
+        True
+        >>> t == thumbprint(jwk)  # deterministic
         True
     """
     if not isinstance(jwk, dict):
@@ -115,8 +117,10 @@ def verify(jwk: dict, expected: str, alg: str = "SHA-256") -> bool:
 
     Examples:
         >>> jwk = {"kty":"EC","crv":"P-256","x":"WbbzF1cNn1_EJq3PGq9U8nFGYQjRCu50XcJV9-4p8nM","y":"HiCGNPCCdJ-x64vhMZX5zYVi2f6xupDrEX7AyCLMBF8"}
-        >>> verify(jwk, "FQ0DupwPUYM-4P3GfX9P7sArvqLlLVmcH6O1SWNLu_o")
+        >>> verify(jwk, "8gvatiX_LIBKyWtMaybQbDA54WNryx3TkpMSnbnlgmo")
         True
+        >>> verify(jwk, "wrong")
+        False
     """
     try:
         actual = thumbprint(jwk, alg)

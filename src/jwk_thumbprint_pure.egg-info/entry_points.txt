@@ -1,2 +1,0 @@
-[console_scripts]
-jwk-thumbprint = jwk_thumbprint_pure.cli:main

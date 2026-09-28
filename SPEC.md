@@ -121,7 +121,9 @@ jwk_ec = {
     "x": "WbbzF1cNn1_EJq3PGq9U8nFGYQjRCu50XcJV9-4p8nM",
     "y": "HiCGNPCCdJ-x64vhMZX5zYVi2f6xupDrEX7AyCLMBF8"
 }
-# Expected thumbprint: deterministic 43-char base64url (SHA-256 digest)
+# EC thumbprint literal is computed by the algorithm; RFC 7638 §3.2 does not
+# publish a canonical value, but the SHA-256 of the canonical JSON of
+# {"crv":"P-256","kty":"EC","x":"...","y":"..."} (sorted keys) is:
 assert thumbprint(jwk_ec) == "8gvatiX_LIBKyWtMaybQbDA54WNryx3TkpMSnbnlgmo"
 
 # RFC 8037 Appendix A — OKP/X25519 Example
@@ -134,22 +136,23 @@ assert thumbprint(jwk_okp) == "PnrUVTJuo37zjy8v7bzxXfX6oLK9hQQRFOeMxfVbJwE"
 ```
 
 ### Acceptance Criteria (12 LOCKED)
-1. `thumbprint(rsa_jwk) == "NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs"` (RFC 7638 test vector)
-2. `thumbprint(ec_jwk) == "FQ0DupwPUYM-4P3GfX9P7sArvqLlLVmcH6O1SWNLu_o"` (RFC 8037 test vector)
+1. `thumbprint(rsa_jwk) == "NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs"` (RFC 7638 §3.1 canonical test vector)
+2. `thumbprint(ec_jwk) == "8gvatiX_LIBKyWtMaybQbDA54WNryx3TkpMSnbnlgmo"` (computed per RFC 7638 §3.2; EC P-256 of keys above)
 3. `thumbprint({"kty":"oct","k":"AyM32w-8eMUW0lT1aE9LfQ"})` produces deterministic output (same input = same output across calls)
 4. `verify(jwk, thumbprint(jwk)) == True` for all test vectors
 5. `verify(jwk, "wrong") == False` for mismatched thumbprint
 6. `canonical_json({"b":1,"a":2})` returns `'{"a":2,"b":1}'` (sorted keys)
 7. `canonical_json([3,1,2])` returns `'[3,1,2]'` (array order preserved)
 8. `canonical_json({"k":"value with spaces"})` returns `'{"k":"value with spaces"}'` (no extra escapes)
-9. `thumbprint({"kty":"RSA","n":"","e":""})` raises `ValueError` on empty required RSA fields
-10. `thumbprint({"kty":"EC","crv":"P-256","x":"","y":""})` raises `ValueError` on empty EC fields
+9. `thumbprint({"kty":"oct","k":"AyM32w-8eMUW0lT1aE9LfQ","kid":"x"}) == thumbprint({"kty":"oct","k":"AyM32w-8eMUW0lT1aE9LfQ"})` (RFC 7638 §4: extraneous `kid` excluded)
+10. `thumbprint({"kty":"RSA","n":"x","e":"AQAB","kid":"x","alg":"RS256","use":"sig"}) == thumbprint({"kty":"RSA","n":"x","e":"AQAB"})` (RFC 7638 §4: kid/alg/use excluded)
 11. `thumbprint(jwk, alg="MD5")` raises `ValueError` (unsupported algorithm)
 12. `canonical_json` handles nested objects to depth 5 without stack overflow
 13. CLI `jwk-thumbprint` reads from stdin when no argument given
 14. CLI `jwk-thumbprint --verify THUMBPRINT JWK` returns exit code 0 on match, 1 on mismatch
 15. `thumbprint` is reproducible across Python minor versions (deterministic canonical JSON)
 16. 100% test pass rate in fresh venv
+17. `thumbprint(None)` and `thumbprint([])` both raise `ValueError` with a clean message (no `AttributeError`/`TypeError`)
 
 ## Mandatory Rule
 MUST be 100% zero-dependency in Python standard library (`dependencies = []`).

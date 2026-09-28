@@ -15,6 +15,16 @@ from jwk_thumbprint_pure.canonical import canonical_json
 
 SUPPORTED_ALGS = {"SHA-256"}
 
+# RFC 7638 Section 3.2 — required members per kty
+# RSA: n, e  |  EC: crv, x, y  |  oct: k  |  OKP: crv, x
+_REQUIRED_MEMBERS = {
+    "RSA": ("n", "e"),
+    "EC": ("crv", "x", "y"),
+    "oct": ("k",),
+    "OKP": ("crv", "x"),  # RFC 7638 §3.2: OKP uses crv+x only
+    # RSA-OAEP (symmetric) and dir use only kty
+}
+
 
 @dataclass
 class JWKThumbprint:
@@ -61,8 +71,25 @@ def thumbprint(jwk: dict, alg: str = "SHA-256") -> str:
     if alg not in SUPPORTED_ALGS:
         raise ValueError(f"Unsupported algorithm: {alg}. Supported: {sorted(SUPPORTED_ALGS)}")
 
+    kty = jwk["kty"]
+
+    # RFC 7638 §4: filter to kty + required-by-kty members.
+    # For recognized kty values, only those required members are included.
+    # For unrecognized kty values, pass through all members (RFC 7638
+    # does not define required members for future kty values).
+    if kty in _REQUIRED_MEMBERS:
+        required = _REQUIRED_MEMBERS[kty]
+        filtered = {"kty": kty}
+        for member in required:
+            if member in jwk:
+                filtered[member] = jwk[member]
+    else:
+        # Unknown kty: include all members present in the JWK
+        # (future spec must define required members for that kty)
+        filtered = dict(jwk)
+
     # Canonical JSON per RFC 8785 — sorts object keys lexicographically
-    canon = canonical_json(jwk)
+    canon = canonical_json(filtered)
 
     if alg == "SHA-256":
         digest = hashlib.sha256(canon.encode("utf-8")).digest()

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jwk-thumbprint-pure"
-version = "0.1.0"
+version = "0.1.1"
 description = "Pure-Python RFC 7638 JWK Thumbprint implementation — zero dependencies"
 readme = "README.md"
 license = {text = "MIT"}

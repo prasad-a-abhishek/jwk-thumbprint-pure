@@ -125,5 +125,10 @@ def verify(jwk: dict, expected: str, alg: str = "SHA-256") -> bool:
     try:
         actual = thumbprint(jwk, alg)
         return actual == expected
-    except (ValueError, TypeError):
+    except (ValueError, TypeError, RecursionError):
+        # RecursionError is a DoS surface for callers that accept JWKs
+        # from untrusted sources (e.g., deeply-nested adversarial dicts
+        # blow the call stack during canonical_json recursion). A verify()
+        # that raises lets an attacker crash the host process; the boolean
+        # contract requires us to return False on any verification failure.
         return False

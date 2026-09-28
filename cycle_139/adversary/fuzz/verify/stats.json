@@ -1,21 +1,29 @@
 {
   "cycle_id": 139,
-  "phase": "T2_harnesses",
+  "phase": "T3_corpus_run",
   "surface": "verify",
   "harness": "harness_verify.py",
   "asan_ubsan_enabled": false,
-  "asan_ubsan_note": "Atheris ships its own coverage instrumentation; ASan/UBSan are OS-level and require the runtime to be enabled. The harness itself is compatible with ASan/UBSan-enabled CPython (atheris loads natively under them); whether they catch issues depends on the CPython build, not the harness.",
-  "wall_budget_seconds": 5,
-  "iterations": null,
-  "duration_seconds": null,
-  "cov_edges": null,
-  "cov_features": null,
-  "crashes_total": 0,
+  "wall_budget_seconds": 300,
+  "iterations": 41,
+  "duration_seconds": 9,
+  "cov_edges": 80,
+  "cov_features": 128,
+  "crashes_total": 2,
   "hangs_total": 0,
   "oom_total": 0,
   "oracle_mismatches_total": 0,
-  "crash_files": [],
+  "crash_files": [
+    "cycle_139/adversary/fuzz/crashes/verify/crash-6b9a758c8e74dc63f8539965eaf962f7e9d31c2e",
+    "cycle_139/adversary/fuzz/crashes/verify/crash-b753d636f6ee46bb9242d01ff8b61f715e9a88c3"
+  ],
+  "crash_signatures": [
+    "V002: verify(depth=470) leaked RecursionError (must catch and return False, DoS surface)",
+    "V002: verify(depth=350) leaked RecursionError (mutated-from-V002 repro)"
+  ],
   "log_path": "cycle_139/adversary/fuzz/logs/verify.log",
   "corpus_path": "cycle_139/adversary/fuzz/corpus/verify/",
-  "note": "T2 deliverable: stats to be populated by T3 (corpus_run) at 5-min/surface wall budget."
+  "note": "T3 wall budget 300s; Atheris exited at rc=77 on V002 reproducer (sec 9). The two distinct crash files correspond to two RecursionError depth paths (350 and 470 frames); both reproduce the same V002 finding.",
+  "started_at": "2026-09-28T11:09:10Z",
+  "ended_at": "2026-09-28T11:09:19Z"
 }

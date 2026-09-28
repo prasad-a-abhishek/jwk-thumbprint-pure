@@ -1,0 +1,57 @@
+===================================================================
+cycle_139 adversarial fuzz sweep (HARNESSES phase)
+  per-harness timeout: 300s
+  PYTHONPATH:          /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/src
+  python:              /usr/local/bin/python3 (Python 3.11.15)
+  atheris:             installed
+  repo_root:           /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01
+===================================================================
+-------------------------------------------------------------------
+[run]  harness_compute.py (surface=compute, timeout=300s)
+-------------------------------------------------------------------
+  rc=77   log=/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs/compute.log
+  (last 5 lines of /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs/compute.log)
+    MS: 1 ChangeBit-; base unit: a1a7715c7596c77b892dc6d4debb7c108ca4ef97
+    0xb9,
+    \271
+    artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/compute/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/compute/crash-f8407e180bd92589b728af21c5626c18770cf26b
+    Base64: uQ==
+  summary: crashes=1 hangs=0 oom=0
+-------------------------------------------------------------------
+[run]  harness_verify.py (surface=verify, timeout=300s)
+-------------------------------------------------------------------
+  rc=77   log=/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs/verify.log
+  (last 5 lines of /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs/verify.log)
+    MS: 4 InsertByte-CrossOver-ChangeBit-CrossOver-; base unit: adc83b19e793491b1c6ea0fd8b46cd9f32e592fc
+    0x41,0x78,0x1,
+    Ax\001
+    artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/verify/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/verify/crash-6b9a758c8e74dc63f8539965eaf962f7e9d31c2e
+    Base64: QXgB
+  summary: crashes=1 hangs=0 oom=0
+-------------------------------------------------------------------
+[run]  harness_canonical.py (surface=canonical, timeout=300s)
+-------------------------------------------------------------------
+  rc=77   log=/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs/canonical.log
+  (last 5 lines of /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs/canonical.log)
+    MS: 0 ; base unit: 0000000000000000000000000000000000000000
+    0xa,
+    \012
+    artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/canonical/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/canonical/crash-adc83b19e793491b1c6ea0fd8b46cd9f32e592fc
+    Base64: Cg==
+  summary: crashes=1 hangs=0 oom=0
+-------------------------------------------------------------------
+[run]  harness_cli.py (surface=cli, timeout=300s)
+-------------------------------------------------------------------
+  rc=124   log=/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs/cli.log
+  (last 5 lines of /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs/cli.log)
+    #5867	REDUCE cov: 85 ft: 117 corp: 17/24b lim: 48 exec/s: 42 rss: 48Mb L: 2/2 MS: 3 InsertByte-EraseBytes-EraseBytes-
+    #6408	REDUCE cov: 85 ft: 118 corp: 18/26b lim: 53 exec/s: 42 rss: 48Mb L: 2/2 MS: 1 ChangeBit-
+    #7775	NEW    cov: 85 ft: 120 corp: 19/28b lim: 63 exec/s: 42 rss: 48Mb L: 2/2 MS: 2 EraseBytes-InsertByte-
+    #8192	pulse  cov: 85 ft: 120 corp: 19/28b lim: 63 exec/s: 42 rss: 48Mb
+    ==13244== libFuzzer: run interrupted; exiting
+  summary: crashes=0 hangs=0 oom=0
+===================================================================
+sweep complete
+  artifacts: /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/crashes  /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/hangs  /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/oom
+  logs:      /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/logs
+===================================================================

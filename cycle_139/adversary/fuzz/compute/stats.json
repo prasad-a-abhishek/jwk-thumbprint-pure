@@ -1,21 +1,29 @@
 {
   "cycle_id": 139,
-  "phase": "T2_harnesses",
+  "phase": "T3_corpus_run",
   "surface": "compute",
   "harness": "harness_compute.py",
   "asan_ubsan_enabled": false,
-  "asan_ubsan_note": "Atheris ships its own coverage instrumentation; ASan/UBSan are OS-level and require the runtime to be enabled. The harness itself is compatible with ASan/UBSan-enabled CPython (atheris loads natively under them); whether they catch issues depends on the CPython build, not the harness.",
-  "wall_budget_seconds": 5,
-  "iterations": null,
-  "duration_seconds": null,
-  "cov_edges": null,
-  "cov_features": null,
-  "crashes_total": 0,
+  "wall_budget_seconds": 300,
+  "iterations": 14,
+  "duration_seconds": 6,
+  "cov_edges": 80,
+  "cov_features": 112,
+  "crashes_total": 2,
   "hangs_total": 0,
   "oom_total": 0,
   "oracle_mismatches_total": 0,
-  "crash_files": [],
+  "crash_files": [
+    "cycle_139/adversary/fuzz/crashes/compute/crash-1e5c2f367f02e47a8c160cda1cd9d91decbac441",
+    "cycle_139/adversary/fuzz/crashes/compute/crash-f8407e180bd92589b728af21c5626c18770cf26b"
+  ],
+  "crash_signatures": [
+    "V009: compute_thumbprint(mixed-type dict) raised TypeError (SPEC promises ValueError)",
+    "V007: compute_thumbprint(RSA missing 'e') silently produced thumbprint (RFC 7638 \u00a73.2 requires raising)"
+  ],
   "log_path": "cycle_139/adversary/fuzz/logs/compute.log",
   "corpus_path": "cycle_139/adversary/fuzz/corpus/compute/",
-  "note": "T2 deliverable: stats to be populated by T3 (corpus_run) at 5-min/surface wall budget."
+  "note": "T3 wall budget 300s; Atheris exited at rc=77 on first encountered crashing input (sec 6). libFuzzer abort_on_first_crash fired because the AssertionError-raising harness paths surfaced immediately. Two unique crashes captured, both reproduce deterministically with no-abort_on_first_crash removed.",
+  "started_at": "2026-09-28T11:09:03Z",
+  "ended_at": "2026-09-28T11:09:09Z"
 }

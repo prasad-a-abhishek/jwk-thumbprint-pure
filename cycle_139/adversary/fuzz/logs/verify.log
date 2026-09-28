@@ -9,29 +9,26 @@ WARNING: Failed to find function "__sanitizer_acquire_crash_state".
 WARNING: Failed to find function "__sanitizer_print_stack_trace".
 WARNING: Failed to find function "__sanitizer_set_death_callback".
 INFO: Running with entropic power schedule (0xFF, 100).
-INFO: Seed: 1328966151
+INFO: Seed: 4011218893
 INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
 INFO: A corpus is not provided, starting from an empty corpus
 #2	INITED cov: 10 ft: 10 corp: 1/1b exec/s: 0 rss: 47Mb
-#5	NEW    cov: 51 ft: 51 corp: 2/3b lim: 4 exec/s: 0 rss: 47Mb L: 2/2 MS: 3 InsertByte-ChangeBit-ChangeBinInt-
-#6	NEW    cov: 51 ft: 60 corp: 3/4b lim: 4 exec/s: 0 rss: 47Mb L: 1/2 MS: 1 EraseBytes-
-#7	NEW    cov: 58 ft: 67 corp: 4/5b lim: 4 exec/s: 0 rss: 47Mb L: 1/2 MS: 1 EraseBytes-
-#21	NEW    cov: 69 ft: 117 corp: 5/8b lim: 4 exec/s: 0 rss: 47Mb L: 3/3 MS: 4 CopyPart-ShuffleBytes-InsertByte-ShuffleBytes-
-#22	NEW    cov: 69 ft: 129 corp: 6/11b lim: 4 exec/s: 0 rss: 47Mb L: 3/3 MS: 1 ChangeByte-
-#23	NEW    cov: 72 ft: 138 corp: 7/13b lim: 4 exec/s: 0 rss: 47Mb L: 2/3 MS: 1 InsertByte-
-#25	NEW    cov: 72 ft: 150 corp: 8/15b lim: 4 exec/s: 0 rss: 47Mb L: 2/3 MS: 2 CopyPart-ChangeBinInt-
+#7	NEW    cov: 52 ft: 52 corp: 2/3b lim: 4 exec/s: 0 rss: 47Mb L: 2/2 MS: 5 CrossOver-CopyPart-ChangeBit-ShuffleBytes-ChangeByte-
+#11	NEW    cov: 63 ft: 102 corp: 3/5b lim: 4 exec/s: 0 rss: 47Mb L: 2/2 MS: 4 ShuffleBytes-CopyPart-CopyPart-CMP- DE: "\001\000"-
+#12	NEW    cov: 66 ft: 105 corp: 4/7b lim: 4 exec/s: 0 rss: 47Mb L: 2/2 MS: 1 InsertByte-
+#16	NEW    cov: 66 ft: 127 corp: 5/10b lim: 4 exec/s: 0 rss: 47Mb L: 3/3 MS: 4 ChangeByte-InsertByte-ChangeByte-ChangeASCIIInt-
 
  === Uncaught Python exception: ===
-AssertionError: V002 REPRODUCED: verify(depth=350) leaked RecursionError (RecursionError('maximum recursion depth exceeded')) — verify() must catch RecursionError and return False (DoS surface)
+AssertionError: V002 REPRODUCED: verify(depth=470) leaked RecursionError (RecursionError('maximum recursion depth exceeded')) — verify() must catch RecursionError and return False (DoS surface)
 Traceback (most recent call last):
   File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_verify.py", line 137, in TestOneInput
     raise AssertionError(
-AssertionError: V002 REPRODUCED: verify(depth=350) leaked RecursionError (RecursionError('maximum recursion depth exceeded')) — verify() must catch RecursionError and return False (DoS surface)
+AssertionError: V002 REPRODUCED: verify(depth=470) leaked RecursionError (RecursionError('maximum recursion depth exceeded')) — verify() must catch RecursionError and return False (DoS surface)
 
-==12395== ERROR: libFuzzer: fuzz target exited
+==13224== ERROR: libFuzzer: fuzz target exited
 SUMMARY: libFuzzer: fuzz target exited
-MS: 4 ChangeBinInt-ChangeBit-ChangeBit-EraseBytes-; base unit: 3793f8b264fc5a9a4ac819584d497da6d789cac2
-0x1,
-\001
-artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/verify/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/verify/crash-bf8b4530d8d246dd74ac53a13471bba17941dff7
-Base64: AQ==
+MS: 4 InsertByte-CrossOver-ChangeBit-CrossOver-; base unit: adc83b19e793491b1c6ea0fd8b46cd9f32e592fc
+0x41,0x78,0x1,
+Ax\001
+artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/verify/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/verify/crash-6b9a758c8e74dc63f8539965eaf962f7e9d31c2e
+Base64: QXgB

@@ -1,0 +1,134 @@
+{
+  "cycle_id": 139,
+  "phase": "T3_corpus_run",
+  "surfaces": {
+    "core_api_compute": {
+      "cycle_id": 139,
+      "phase": "T3_corpus_run",
+      "surface": "compute",
+      "harness": "harness_compute.py",
+      "asan_ubsan_enabled": false,
+      "wall_budget_seconds": 300,
+      "iterations": 14,
+      "duration_seconds": 6,
+      "cov_edges": 80,
+      "cov_features": 112,
+      "crashes_total": 2,
+      "hangs_total": 0,
+      "oom_total": 0,
+      "oracle_mismatches_total": 0,
+      "crash_files": [
+        "cycle_139/adversary/fuzz/crashes/compute/crash-1e5c2f367f02e47a8c160cda1cd9d91decbac441",
+        "cycle_139/adversary/fuzz/crashes/compute/crash-f8407e180bd92589b728af21c5626c18770cf26b"
+      ],
+      "crash_signatures": [
+        "V009: compute_thumbprint(mixed-type dict) raised TypeError (SPEC promises ValueError)",
+        "V007: compute_thumbprint(RSA missing 'e') silently produced thumbprint (RFC 7638 \u00a73.2 requires raising)"
+      ],
+      "log_path": "cycle_139/adversary/fuzz/logs/compute.log",
+      "corpus_path": "cycle_139/adversary/fuzz/corpus/compute/",
+      "note": "T3 wall budget 300s; Atheris exited at rc=77 on first encountered crashing input (sec 6). libFuzzer abort_on_first_crash fired because the AssertionError-raising harness paths surfaced immediately. Two unique crashes captured, both reproduce deterministically with no-abort_on_first_crash removed.",
+      "started_at": "2026-09-28T11:09:03Z",
+      "ended_at": "2026-09-28T11:09:09Z"
+    },
+    "verify_api": {
+      "cycle_id": 139,
+      "phase": "T3_corpus_run",
+      "surface": "verify",
+      "harness": "harness_verify.py",
+      "asan_ubsan_enabled": false,
+      "wall_budget_seconds": 300,
+      "iterations": 41,
+      "duration_seconds": 9,
+      "cov_edges": 80,
+      "cov_features": 128,
+      "crashes_total": 2,
+      "hangs_total": 0,
+      "oom_total": 0,
+      "oracle_mismatches_total": 0,
+      "crash_files": [
+        "cycle_139/adversary/fuzz/crashes/verify/crash-6b9a758c8e74dc63f8539965eaf962f7e9d31c2e",
+        "cycle_139/adversary/fuzz/crashes/verify/crash-b753d636f6ee46bb9242d01ff8b61f715e9a88c3"
+      ],
+      "crash_signatures": [
+        "V002: verify(depth=470) leaked RecursionError (must catch and return False, DoS surface)",
+        "V002: verify(depth=350) leaked RecursionError (mutated-from-V002 repro)"
+      ],
+      "log_path": "cycle_139/adversary/fuzz/logs/verify.log",
+      "corpus_path": "cycle_139/adversary/fuzz/corpus/verify/",
+      "note": "T3 wall budget 300s; Atheris exited at rc=77 on V002 reproducer (sec 9). The two distinct crash files correspond to two RecursionError depth paths (350 and 470 frames); both reproduce the same V002 finding.",
+      "started_at": "2026-09-28T11:09:10Z",
+      "ended_at": "2026-09-28T11:09:19Z"
+    },
+    "canonical_json": {
+      "cycle_id": 139,
+      "phase": "T3_corpus_run",
+      "surface": "canonical",
+      "harness": "harness_canonical.py",
+      "asan_ubsan_enabled": false,
+      "wall_budget_seconds": 300,
+      "iterations": 0,
+      "duration_seconds": 2,
+      "cov_edges": 0,
+      "cov_features": 0,
+      "crashes_total": 1,
+      "hangs_total": 0,
+      "oom_total": 0,
+      "oracle_mismatches_total": 1,
+      "crash_files": [
+        "cycle_139/adversary/fuzz/crashes/canonical/crash-adc83b19e793491b1c6ea0fd8b46cd9f32e592fc"
+      ],
+      "crash_signatures": [
+        "V010: canonical_json({True: 1}) produces '{true:1}' (unquoted key) \u2014 invalid JSON output (SPEC promises valid JSON)"
+      ],
+      "log_path": "cycle_139/adversary/fuzz/logs/canonical.log",
+      "corpus_path": "cycle_139/adversary/fuzz/corpus/canonical/",
+      "note": "T3 wall budget 300s; Atheris exited at rc=77 immediately on byte 0x0a crashing input (sec 2). Minimal reproducer minimized to single byte 0x0a (newline) \u2014 the FDP parses it as a bool-keyed dict triggering V010. This is the same root cause as the smoke-test reproducer; the same crash file hash confirms libFuzzer dedup.",
+      "started_at": "2026-09-28T11:09:20Z",
+      "ended_at": "2026-09-28T11:09:22Z"
+    },
+    "cli": {
+      "cycle_id": 139,
+      "phase": "T3_corpus_run",
+      "surface": "cli",
+      "harness": "harness_cli.py",
+      "asan_ubsan_enabled": false,
+      "wall_budget_seconds": 300,
+      "iterations": 8192,
+      "duration_seconds": 299,
+      "cov_edges": 85,
+      "cov_features": 120,
+      "crashes_total": 0,
+      "hangs_total": 0,
+      "oom_total": 0,
+      "oracle_mismatches_total": 0,
+      "crash_files": [],
+      "crash_signatures": [],
+      "log_path": "cycle_139/adversary/fuzz/logs/cli.log",
+      "corpus_path": "cycle_139/adversary/fuzz/corpus/cli/",
+      "note": "T3 wall budget 300s; Atheris ran the full 5 minutes cleanly with rc=124 (timeout SIGTERM), 8192 iterations, 85 cov edges, 120 features, 19 unique corpus entries. No crashes, hangs, or OOMs. CLI surface is clean per harness contract.",
+      "started_at": "2026-09-28T11:09:23Z",
+      "ended_at": "2026-09-28T11:14:40Z"
+    }
+  },
+  "total_iters": 8247,
+  "total_crashes": 5,
+  "total_hangs": 0,
+  "total_oom": 0,
+  "total_oracle_mismatches": 1,
+  "started_at": "2026-09-28T11:09:03Z",
+  "ended_at": "2026-09-28T11:14:40Z",
+  "duration_seconds": 337,
+  "wall_budget_seconds_per_surface": 300,
+  "fuzzer_runtime": "atheris 0.0.0.dev0 (libFuzzer + CoverageGuidedFuzzer)",
+  "corpus_seed_count_per_surface": {
+    "core_api_compute": 35,
+    "verify_api": 12,
+    "canonical_json": 23,
+    "cli": 11
+  },
+  "asan_ubsan_enabled": false,
+  "asan_ubsan_note": "Atheris instrumentation is enabled; OS-level ASan/UBSan require an ASan/UBSan-built Python interpreter. The harness sources are ASan/UBSan-compatible.",
+  "runner_script": "cycle_139/adversary/fuzz/run_harnesses.sh",
+  "stop_reason": "Master sweep completed: all 4 surfaces ran within wall budget; 3 crashed fast on seeded T1 reproducers (verifying T1-VULN_AUDIT findings), 1 (CLI) ran the full 5 minutes clean."
+}

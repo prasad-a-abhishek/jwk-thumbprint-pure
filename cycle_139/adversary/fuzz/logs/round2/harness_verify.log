@@ -1,0 +1,8 @@
+
+==26285== ERROR: libFuzzer: fuzz target exited
+SUMMARY: libFuzzer: fuzz target exited
+MS: 5 ChangeByte-ChangeBit-ChangeBinInt-CopyPart-InsertByte-; base unit: 4b09c3c7d6fd916cff7022fdfabf773482be6d2a
+0x2,0x2,0xb2,0x59,
+\002\002\262Y
+artifact_prefix='./'; Test unit written to ./crash-01128560fec509237fafeee2ab8ae9f98c1a23b3
+Base64: AgKyWQ==

@@ -1,21 +1,27 @@
 {
   "cycle_id": 139,
-  "phase": "T2_harnesses",
+  "phase": "T3_corpus_run",
   "surface": "canonical",
   "harness": "harness_canonical.py",
   "asan_ubsan_enabled": false,
-  "asan_ubsan_note": "Atheris ships its own coverage instrumentation; ASan/UBSan are OS-level and require the runtime to be enabled. The harness itself is compatible with ASan/UBSan-enabled CPython (atheris loads natively under them); whether they catch issues depends on the CPython build, not the harness.",
-  "wall_budget_seconds": 5,
-  "iterations": null,
-  "duration_seconds": null,
-  "cov_edges": null,
-  "cov_features": null,
-  "crashes_total": 0,
+  "wall_budget_seconds": 300,
+  "iterations": 0,
+  "duration_seconds": 2,
+  "cov_edges": 0,
+  "cov_features": 0,
+  "crashes_total": 1,
   "hangs_total": 0,
   "oom_total": 0,
-  "oracle_mismatches_total": 0,
-  "crash_files": [],
+  "oracle_mismatches_total": 1,
+  "crash_files": [
+    "cycle_139/adversary/fuzz/crashes/canonical/crash-adc83b19e793491b1c6ea0fd8b46cd9f32e592fc"
+  ],
+  "crash_signatures": [
+    "V010: canonical_json({True: 1}) produces '{true:1}' (unquoted key) \u2014 invalid JSON output (SPEC promises valid JSON)"
+  ],
   "log_path": "cycle_139/adversary/fuzz/logs/canonical.log",
   "corpus_path": "cycle_139/adversary/fuzz/corpus/canonical/",
-  "note": "T2 deliverable: stats to be populated by T3 (corpus_run) at 5-min/surface wall budget."
+  "note": "T3 wall budget 300s; Atheris exited at rc=77 immediately on byte 0x0a crashing input (sec 2). Minimal reproducer minimized to single byte 0x0a (newline) \u2014 the FDP parses it as a bool-keyed dict triggering V010. This is the same root cause as the smoke-test reproducer; the same crash file hash confirms libFuzzer dedup.",
+  "started_at": "2026-09-28T11:09:20Z",
+  "ended_at": "2026-09-28T11:09:22Z"
 }

@@ -8,25 +8,25 @@ WARNING: Failed to find function "__sanitizer_acquire_crash_state".
 WARNING: Failed to find function "__sanitizer_print_stack_trace".
 WARNING: Failed to find function "__sanitizer_set_death_callback".
 INFO: Running with entropic power schedule (0xFF, 100).
-INFO: Seed: 1102250724
+INFO: Seed: 3922331883
 INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
 INFO: A corpus is not provided, starting from an empty corpus
 #2	INITED cov: 47 ft: 47 corp: 1/1b exec/s: 0 rss: 48Mb
-#4	NEW    cov: 69 ft: 101 corp: 2/3b lim: 4 exec/s: 0 rss: 48Mb L: 2/2 MS: 2 CopyPart-ChangeBit-
-#5	NEW    cov: 70 ft: 118 corp: 3/4b lim: 4 exec/s: 0 rss: 48Mb L: 1/2 MS: 1 ChangeByte-
-#8	NEW    cov: 71 ft: 119 corp: 4/6b lim: 4 exec/s: 0 rss: 48Mb L: 2/2 MS: 3 InsertByte-CrossOver-EraseBytes-
+#5	NEW    cov: 51 ft: 52 corp: 2/3b lim: 4 exec/s: 0 rss: 48Mb L: 2/2 MS: 3 ShuffleBytes-CrossOver-ChangeBit-
+#7	NEW    cov: 54 ft: 55 corp: 3/4b lim: 4 exec/s: 0 rss: 48Mb L: 1/2 MS: 2 ShuffleBytes-ChangeBinInt-
+#10	NEW    cov: 56 ft: 57 corp: 4/8b lim: 4 exec/s: 0 rss: 48Mb L: 4/4 MS: 3 InsertByte-InsertByte-ChangeBit-
 
  === Uncaught Python exception: ===
-AssertionError: V009 REPRODUCED: compute_thumbprint(Decimal value) raised TypeError (TypeError('Cannot canonicalize object of type Decimal')) — SPEC promises ValueError
+AssertionError: V007 REPRODUCED: compute_thumbprint({'kty': 'RSA', 'n': 'abc'}) on missing-required member kty='RSA' SILENTLY produced a thumbprint — RFC 7638 §3.2 requires the call to raise
 Traceback (most recent call last):
-  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_compute.py", line 279, in TestOneInput
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_compute.py", line 214, in TestOneInput
     raise AssertionError(
-AssertionError: V009 REPRODUCED: compute_thumbprint(Decimal value) raised TypeError (TypeError('Cannot canonicalize object of type Decimal')) — SPEC promises ValueError
+AssertionError: V007 REPRODUCED: compute_thumbprint({'kty': 'RSA', 'n': 'abc'}) on missing-required member kty='RSA' SILENTLY produced a thumbprint — RFC 7638 §3.2 requires the call to raise
 
-==12385== ERROR: libFuzzer: fuzz target exited
+==13214== ERROR: libFuzzer: fuzz target exited
 SUMMARY: libFuzzer: fuzz target exited
-MS: 3 ChangeBit-ChangeByte-InsertByte-; base unit: 3479b49a78159649c158f570ea0721fdb86eb81c
-0xe,0x85,0x2c,
-\016\205,
-artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/compute/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/compute/crash-cb68e113bae2d74eff0b56102c092885419b1db2
-Base64: DoUs
+MS: 1 ChangeBit-; base unit: a1a7715c7596c77b892dc6d4debb7c108ca4ef97
+0xb9,
+\271
+artifact_prefix='/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/compute/'; Test unit written to /root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/artifacts/compute/crash-f8407e180bd92589b728af21c5626c18770cf26b
+Base64: uQ==

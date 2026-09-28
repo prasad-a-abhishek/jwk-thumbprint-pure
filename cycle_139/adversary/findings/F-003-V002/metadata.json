@@ -1,0 +1,20 @@
+{
+  "id": "F-003-V002",
+  "vuln_audit_id": "V002",
+  "severity": "high",
+  "surface": "verify",
+  "title": "verify(depth=470) leaked RecursionError; verify() must catch and return False (DoS surface)",
+  "crash_file": "cycle_139/adversary/fuzz/crashes/verify/crash-6b9a758c8e74dc63f8539965eaf962f7e9d31c2e",
+  "crash_bytes_hex": "417801",
+  "crash_bytes_size": 3,
+  "harness_category": 1,
+  "harness_category_meaning": "V002 reproducer: deeply-nested JWK",
+  "captured_at": "2026-09-28T11:19:54.073210+00:00",
+  "replay_outcome": "ASSERTION",
+  "replay_message": "V002 REPRODUCED: verify(depth=470) leaked RecursionError (RecursionError('maximum recursion depth exceeded in __instancecheck__')) \u2014 verify() must catch RecursionError and return False (DoS surface)",
+  "fix_hint": "Broaden verify()'s except tuple to include (RecursionError, MemoryError); or wrap entire verify() body in try/except Exception: return False.",
+  "minimized_input": "minimized.bin",
+  "minimized_reproducer": "minimized.py",
+  "stacktrace": "stacktrace.txt",
+  "depth": 470
+}

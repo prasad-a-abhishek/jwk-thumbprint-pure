@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/_build_findings.py", line 301, in <module>
+    h.TestOneInput(data)
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_canonical.py", line 214, in TestOneInput
+    raise AssertionError(
+AssertionError: V010 REPRODUCED: canonical_json({True: 1}) = '{true:1}' contains an unquoted identifier as a key — invalid JSON (SPEC promises valid JSON output)

@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_verify.py", line 135, in TestOneInput
+    ok = verify(jwk, "any")
+         ^^^^^^^^^^^^^^^^^^
+  File "/root/projects/jwk-thumbprint-pure/src/jwk_thumbprint_pure/thumbprint.py", line 126, in verify
+    actual = thumbprint(jwk, alg)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/jwk-thumbprint-pure/src/jwk_thumbprint_pure/thumbprint.py", line 94, in thumbprint
+  ... [truncated, 1999 lines omitted] ...
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/_build_findings.py", line 301, in <module>
+    h.TestOneInput(data)
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_verify.py", line 137, in TestOneInput
+    raise AssertionError(
+AssertionError: V002 REPRODUCED: verify(depth=350) leaked RecursionError (RecursionError('maximum recursion depth exceeded in __instancecheck__')) — verify() must catch RecursionError and return False (DoS surface)

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_compute.py", line 250, in TestOneInput
+    compute_thumbprint(jwk)
+  File "/root/projects/jwk-thumbprint-pure/src/jwk_thumbprint_pure/thumbprint.py", line 94, in thumbprint
+    canon = canonical_json(filtered)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/jwk-thumbprint-pure/src/jwk_thumbprint_pure/canonical.py", line 76, in canonical_json
+    items = sorted(obj.items(), key=lambda kv: kv[0])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'int' and 'str'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/_build_findings.py", line 301, in <module>
+    h.TestOneInput(data)
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_compute.py", line 255, in TestOneInput
+    raise AssertionError(
+AssertionError: V009 REPRODUCED: compute_thumbprint(mixed-type dict) raised TypeError (TypeError("'<' not supported between instances of 'int' and 'str'")) — SPEC promises ValueError

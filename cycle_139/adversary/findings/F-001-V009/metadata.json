@@ -1,0 +1,19 @@
+{
+  "id": "F-001-V009",
+  "vuln_audit_id": "V009",
+  "severity": "low",
+  "surface": "compute",
+  "title": "compute_thumbprint(mixed-type dict) raised TypeError; SPEC promises ValueError",
+  "crash_file": "cycle_139/adversary/fuzz/crashes/compute/crash-1e5c2f367f02e47a8c160cda1cd9d91decbac441",
+  "crash_bytes_hex": "5b",
+  "crash_bytes_size": 1,
+  "harness_category": 7,
+  "harness_category_meaning": "V009 reproducer: mixed-type dict keys",
+  "captured_at": "2026-09-28T11:19:54.073210+00:00",
+  "replay_outcome": "ASSERTION",
+  "replay_message": "V009 REPRODUCED: compute_thumbprint(mixed-type dict) raised TypeError (TypeError(\"'<' not supported between instances of 'int' and 'str'\")) \u2014 SPEC promises ValueError",
+  "fix_hint": "Catch TypeError at thumbprint()/canonical_json() and re-raise as ValueError, OR guard against non-str keys before canonical_json.",
+  "minimized_input": "minimized.bin",
+  "minimized_reproducer": "minimized.py",
+  "stacktrace": "stacktrace.txt"
+}

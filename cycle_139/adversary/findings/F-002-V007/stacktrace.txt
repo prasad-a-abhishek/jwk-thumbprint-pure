@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/_build_findings.py", line 301, in <module>
+    h.TestOneInput(data)
+  File "/root/projects/jwk-thumbprint-pure/.worktrees/t_cycle139-adv-01/cycle_139/adversary/fuzz/harness_compute.py", line 214, in TestOneInput
+    raise AssertionError(
+AssertionError: V007 REPRODUCED: compute_thumbprint({'kty': 'RSA', 'n': 'abc'}) on missing-required member kty='RSA' SILENTLY produced a thumbprint — RFC 7638 §3.2 requires the call to raise

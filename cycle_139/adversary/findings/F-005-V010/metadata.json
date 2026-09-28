@@ -1,0 +1,19 @@
+{
+  "id": "F-005-V010",
+  "vuln_audit_id": "V010",
+  "severity": "medium",
+  "surface": "canonical",
+  "title": "canonical_json({True: 1}) produced '{true:1}' (unquoted key) \u2014 invalid JSON output",
+  "crash_file": "cycle_139/adversary/fuzz/crashes/canonical/crash-adc83b19e793491b1c6ea0fd8b46cd9f32e592fc",
+  "crash_bytes_hex": "0a",
+  "crash_bytes_size": 1,
+  "harness_category": 10,
+  "harness_category_meaning": "V010 reproducer: bool as dict key",
+  "captured_at": "2026-09-28T11:19:54.073210+00:00",
+  "replay_outcome": "ASSERTION",
+  "replay_message": "V010 REPRODUCED: canonical_json({True: 1}) = '{true:1}' contains an unquoted identifier as a key \u2014 invalid JSON (SPEC promises valid JSON output)",
+  "fix_hint": "Reject bool keys before recursion, OR coerce keys to strings (true -> 'true'), OR raise TypeError on non-str keys.",
+  "minimized_input": "minimized.bin",
+  "minimized_reproducer": "minimized.py",
+  "stacktrace": "stacktrace.txt"
+}

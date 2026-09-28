@@ -1,0 +1,19 @@
+{
+  "id": "F-002-V007",
+  "vuln_audit_id": "V007",
+  "severity": "medium",
+  "surface": "compute",
+  "title": "compute_thumbprint(RSA missing 'e') silently produced thumbprint; RFC 7638 \u00a73.2 requires raising",
+  "crash_file": "cycle_139/adversary/fuzz/crashes/compute/crash-f8407e180bd92589b728af21c5626c18770cf26b",
+  "crash_bytes_hex": "b9",
+  "crash_bytes_size": 1,
+  "harness_category": 5,
+  "harness_category_meaning": "V007 reproducer: recognized kty missing required member",
+  "captured_at": "2026-09-28T11:19:54.073210+00:00",
+  "replay_outcome": "ASSERTION",
+  "replay_message": "V007 REPRODUCED: compute_thumbprint({'kty': 'RSA', 'n': 'abc'}) on missing-required member kty='RSA' SILENTLY produced a thumbprint \u2014 RFC 7638 \u00a73.2 requires the call to raise",
+  "fix_hint": "Define MISSING_REQUIRED_MEMBERS(ValueError); raise in filter loop when a recognized kty is missing a required member.",
+  "minimized_input": "minimized.bin",
+  "minimized_reproducer": "minimized.py",
+  "stacktrace": "stacktrace.txt"
+}

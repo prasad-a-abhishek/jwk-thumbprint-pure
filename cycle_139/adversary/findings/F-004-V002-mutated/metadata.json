@@ -1,0 +1,20 @@
+{
+  "id": "F-004-V002-mutated",
+  "vuln_audit_id": "V002",
+  "severity": "high",
+  "surface": "verify",
+  "title": "verify(depth=350) leaked RecursionError (mutated-from-V002 repro)",
+  "crash_file": "cycle_139/adversary/fuzz/crashes/verify/crash-b753d636f6ee46bb9242d01ff8b61f715e9a88c3",
+  "crash_bytes_hex": "e1",
+  "crash_bytes_size": 1,
+  "harness_category": 1,
+  "harness_category_meaning": "V002 reproducer: deeply-nested JWK (mutated input)",
+  "captured_at": "2026-09-28T11:19:54.073210+00:00",
+  "replay_outcome": "ASSERTION",
+  "replay_message": "V002 REPRODUCED: verify(depth=350) leaked RecursionError (RecursionError('maximum recursion depth exceeded in __instancecheck__')) \u2014 verify() must catch RecursionError and return False (DoS surface)",
+  "fix_hint": "Same fix as F-003. This is a mutated reproducer confirming the V002 finding is robust across multiple depth values.",
+  "minimized_input": "minimized.bin",
+  "minimized_reproducer": "minimized.py",
+  "stacktrace": "stacktrace.txt",
+  "depth": 350
+}

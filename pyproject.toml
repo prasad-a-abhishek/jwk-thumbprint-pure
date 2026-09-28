@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jwk-thumbprint-pure"
+version = "0.1.0"
+description = "Pure-Python RFC 7638 JWK Thumbprint implementation — zero dependencies"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [{name = "Repo Factory", email = "repo-factory@example.com"}]
+keywords = ["jwk", "thumbprint", "rfc7638", "json-web-key", "jwt", "oauth", "dpop"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+jwk-thumbprint = "jwk_thumbprint_pure.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/prasad-a-abhishek/jwk-thumbprint-pure"
+Documentation = "https://github.com/prasad-a-abhishek/jwk-thumbprint-pure#readme"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]

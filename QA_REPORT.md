@@ -199,3 +199,52 @@ The 7-check pre-push gate (`/root/projects/.pre-push-gate.sh`) checks:
 tests_passing: true
 
 VERDICT: SHIP
+
+## cycle_139/qa-reverify (after cycle_139/fix1)
+
+**Verdict**: SHIP
+**Parent**: cycle_139/fix1 (t_09ecc08f @ b8d6e03)
+
+### Sub-check results
+
+| # | Sub-check | Result | Notes |
+|---|---|---|---|
+| 1 | F-003 reproducer (depth=470) returns False | PASS | RecursionError caught in verify(); returns False per boolean contract |
+| 2 | F-004 reproducer (depth=350 mutated) returns False | PASS | Same fix path |
+| 3 | RFC 7638 §3.1 RSA canonical unchanged | PASS | thumbprint == `NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs` (full RFC 7638 §3.1 `n` literal) |
+| 4 | RFC 7638 §4 required-membership unchanged | PASS | `thumbprint(rsa_jwk) == thumbprint(rsa_jwk + {kid,alg,use})` → True |
+| 5 | Full pytest | PASS | `147 passed in 0.45s` exit 0 (143 baseline + 4 regression in test_verify_recursion.py) |
+| 6 | CLI smoke | PASS | `python3 -m jwk_thumbprint_pure.cli '<rsa_jwk>'` → exit 0, prints 43-char base64url thumbprint |
+| 7 | Fresh-venv install | PASS | `/tmp/c139_qarev_venv` install + import + thumbprint() all clean; prints expected RFC §3.1 literal |
+| 8 | Secret scan | PASS | `git grep` for 7 secret patterns → 0 hits (exit 1 = no matches, expected) |
+
+### Honesty pillar
+
+| File | Value | Consistent |
+|---|---|---|
+| pyproject.toml `version` | `0.1.0` | yes |
+| `__init__.py.__version__` | `0.1.0` | yes |
+| README badge / version claim | (none — README does not claim a specific version) | yes |
+| README install-note | `pip install git+https://github.com/prasad-a-abhishek/jwk-thumbprint-pure.git` | yes |
+
+honesty_pillar_status: consistent (no version-bump gap; no CHANGELOG.md exists at this stage; ship worker owns the version bump + CHANGELOG entry per cycle_136 #971 SHIP-SIDE HONESTY-FIX pattern)
+
+### Findings from cycle_139/adversary (closed)
+
+- **F-003-V002** (verify() RecursionError DoS, depth=470): CLOSED — verify() now returns False per boolean contract; commit `b8d6e03` widened except clause to `(ValueError, TypeError, RecursionError)`.
+- **F-004-V002-mutated** (verify() RecursionError DoS, depth=350): CLOSED — same fix path.
+- F-007, F-010, F-009 (2 Medium, 1 Low): documented in FUZZING_REPORT.md §6 Recommendations; non-blocking at this stage (no auto-fix-card per cycle_136 #973 T3 oracle-mismatch-vs-crash distinction). ship worker records `findings_closed=[F-003, F-004]` and `findings_total=5` in metadata.
+
+### Notes on V3 sub-check #3 (RFC 7638 §3.1 RSA)
+
+The V3 spec body includes a truncated `n` value (270 chars ending in `V8c8Q`) that yields a different-but-valid thumbprint `t7WEDB36TacK-7ry73jeb9vPKnEeYjGWiwJUg36Tjdk` against this implementation. The full RFC 7638 §3.1 `n` literal (430 chars ending in `KnqDKgw`) yields the expected canonical thumbprint `NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs` and is the value already locked into `tests/test_rfc7638_vectors.py::test_rfc7638_rsa_thumbprint_matches_rfc` and the new `tests/test_verify_recursion.py::TestVerifyRecursion::test_rfc7638_rsa_vector_still_matches`. SC3 was therefore evaluated against the full RFC literal (same pattern as cycle_138 #973 build-side SPEC vector accuracy check).
+
+### Cycle summary
+
+- 12/12 acceptance criteria preserved (no regression vs. cycle_139/qa baseline)
+- 147/147 pytest green (143 baseline + 4 new recursion-regression tests)
+- 0 new runtime deps, 0 secrets, 0 regression on RFC vectors
+- ready_for_ship=true
+
+tests_passing: true
+VERDICT: SHIP
